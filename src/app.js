@@ -285,6 +285,7 @@
   }
 
   /* ---------------- interaction ---------------- */
+  var calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)");
   var drag = null;
   var vel = 0;
   var glide = 0;
@@ -309,6 +310,7 @@
     if (!drag) return;
     drag = null;
     stage.classList.remove("dragging");
+    if (calm && calm.matches) return; // no inertia
     var last = performance.now();
     (function step() {
       var now = performance.now();
@@ -335,6 +337,10 @@
 
   function glideBy(dx) {
     cancelAnimationFrame(glide);
+    if (calm && calm.matches) {
+      moveTo(view.x + dx);
+      return;
+    }
     var x0 = view.x;
     var t0 = performance.now();
     (function step() {
