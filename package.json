@@ -1,0 +1,15 @@
+{
+  "name": "kathmandu-valley",
+  "version": "1.0.0",
+  "description": "An endless, procedurally generated ink scroll of the Kathmandu Valley, built on {Shan, Shui}*",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "serve": "npx --yes http-server -c-1 -p 8000 .",
+    "render": "node scripts/render.js",
+    "build": "node scripts/build.js"
+  },
+  "optionalDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}
